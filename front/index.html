@@ -9,7 +9,53 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <div>Hello World</div>
+    <main class="homepage">
+      <h1>Countries API</h1>
+      <p>
+        Data collected from
+        <a href="https://restcountries.com/" target="_blank"
+          >https://restcountries.com</a
+        >
+      </p>
+
+      <form>
+        <div class="input-text-group">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter a country/capital name"
+          />
+          <div class="searchButtons">
+            <button id="btnShowData">Show Data</button>
+            <button id="btnReset">Reset</button>
+          </div>
+        </div>
+
+        <div class="radioButtons">
+          <div class="input-radio-group">
+            <input type="radio" name="search" id="rad1" value="country" />
+            <label for="rad1">By country</label>
+          </div>
+
+          <div class="input-radio-group">
+            <input type="radio" name="search" id="rad2" value="capital" />
+            <label for="rad2">By capital</label>
+          </div>
+
+          <div class="input-radio-group">
+            <input type="radio" name="search" id="rad3" value="continent" />
+            <label for="rad3">By continent</label>
+          </div>
+        </div>
+      </form>
+
+      <div class="result">
+        Result
+        <ul id="countriesList"></ul>
+      </div>
+    </main>
+
     <script src="./js/jQuery.js"></script>
     <script src="./js/script.js"></script>
   </body>
