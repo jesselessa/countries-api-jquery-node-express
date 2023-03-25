@@ -24,13 +24,13 @@ h1 {
     color: teal;
     margin-bottom: 2rem;
 }
-p {
+.source {
     font-size: 1.8rem;
     font-weight: 500;
     text-align: center;
     margin-bottom: 4rem;
 }
-p a {
+.source a {
 color: #000;
 font-style: italic;
 }
@@ -80,7 +80,7 @@ input[type=text] {
 }
 #btnShowData {
     background: teal;
-    color: #f1f1f1;
+    color: white;
 }
 #btnReset {
     background: #ffc831;
@@ -113,9 +113,28 @@ select {
     height: 35px;
 }
 .result {
-    width: 750px;
+    width: 500px;
     display: flex;
     flex-direction: column;
+}
+#countriesList {
+    list-style-type: none;
+}
+.country {
+    border: 0.2px solid black;
+    border-radius: 0.5rem;
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.countryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.countryInfo span {
+    font-weight: bold;
+    color: teal;
 }
 
 @media screen and (max-width: 766px) {
@@ -145,7 +164,7 @@ select {
 }
 
 @media screen and (max-width: 377px) {
-    p {
+    .source {
         font-size: 1.6rem;    
     }
     .searchButtons {
