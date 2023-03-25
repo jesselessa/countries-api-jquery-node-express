@@ -13,19 +13,23 @@
       <h1>Countries API</h1>
       <p>
         Data collected from
-        <a href="https://restcountries.com/" target="_blank"
-          >https://restcountries.com</a
+        <a href="https://restcountries.com/v3.1/all" target="_blank"
+          >https://restcountries.com/v3.1/all</a
         >
       </p>
 
       <form>
+        <span class="error-message">Enter a valid name</span>
+
         <div class="input-text-group">
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Enter a country/capital name"
+            required
           />
+
           <div class="searchButtons">
             <button id="btnShowData">Show Data</button>
             <button id="btnReset">Reset</button>
@@ -34,7 +38,13 @@
 
         <div class="radioButtons">
           <div class="input-radio-group">
-            <input type="radio" name="search" id="rad1" value="country" />
+            <input
+              type="radio"
+              name="search"
+              id="rad1"
+              value="country"
+              checked
+            />
             <label for="rad1">By country</label>
           </div>
 
@@ -44,8 +54,16 @@
           </div>
 
           <div class="input-radio-group">
-            <input type="radio" name="search" id="rad3" value="continent" />
+            <input type="radio" name="search" id="rad3" value="capital" />
             <label for="rad3">By continent</label>
+            <select name="search" id="continent">
+              <option value="">-- Select a subregion --</option>
+              <option value="africa">Africa</option>
+              <option value="america">Americas</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="spider">Oceania</option>
+            </select>
           </div>
         </div>
       </form>
@@ -56,7 +74,7 @@
       </div>
     </main>
 
-    <script src="./js/jQuery.js"></script>
+    <script src="./js/jQuery-3.6.4.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>
