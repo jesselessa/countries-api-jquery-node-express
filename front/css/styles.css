@@ -14,6 +14,7 @@ body {
 .homepage {
     min-height: 100vh;
     width: 100vw;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,17 +90,6 @@ input[type=text]::placeholder {
 #btnReset {
     background: #ffc831;
 }
-.inputErrorMsg, .selectErrorMsg {
-    font-size: 1.5rem;
-    color: crimson;
-    /* display: none; */
-}
-.inputErrorMsg {
-    margin-bottom: 1rem;
-}
-.selectErrorMsg {
-    margin-top: 1rem;
-}
 .input-radio-group {
     margin-right: 3rem;
 }
@@ -145,6 +135,7 @@ select {
     color: teal;
 }
 
+/*! MEDIA QUERIES */
 @media screen and (max-width: 766px) {
     .homepage {
         padding: 3rem 1rem;
