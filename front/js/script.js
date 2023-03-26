@@ -36,6 +36,8 @@ $().ready(() => {
     $("form").submit((e) => {
       e.preventDefault();
 
+      
+
       $(".country").remove();
 
       showSpinner(); // Display spinner
@@ -67,16 +69,21 @@ $().ready(() => {
   }
   reset();
 
-  //* Get countries info by name, capital or continent
+  //* Get countries info depending on checked radio button
   function getAllCountries() {
     let url,
-      inputValue = $("#name").val(); // To retrieve value of input
+      inputValue = $("#name").val(),
+      selectOptionValue = $("#continent-select option:selected").text();
+
     if ($("#country-btn").is(":checked")) {
       url = `https://restcountries.com/v3.1/name/${inputValue}`;
     } else if ($("#capital-btn").is(":checked")) {
       url = `https://restcountries.com/v3.1/capital/${inputValue}`;
-    } else if ($("#continent-btn").is(":checked")) {
-      url = `https://restcountries.com/v3.1/region/${inputValue}`;
+    } else if (
+      $("#continent-btn").is(":checked") &&
+      $("#continent-select option").is(":selected")
+    ) {
+      url = `https://restcountries.com/v3.1/region/${selectOptionValue}`;
     }
 
     $.ajax({

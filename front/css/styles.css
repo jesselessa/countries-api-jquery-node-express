@@ -52,18 +52,19 @@ form {
     gap: 1rem;
 }
 input[type=text] {
-    width: 350px;
     width: 60%;
     height: 40px;
     font-size: 1.5rem;
+    background: white;
     padding-left: 0.5rem;
+    border: 0.1rem solid black;
+    border-radius: 0.4rem;
 }
 input[type=text]::placeholder {
     font-size: 1.4rem;
     font-style: italic;
 }
 .searchButtons {
-    width: 325px;
     width: 40%;
     display: flex;
     align-items: center;
@@ -109,6 +110,12 @@ input[type=radio]:hover {
 }
 select {
     height: 35px;
+}
+.errorMsg {
+    display: none;
+    font-size: 1.5rem;
+    color: crimson;
+    margin-top: 1rem;
 }
 .result {
     width: 500px;

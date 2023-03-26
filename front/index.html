@@ -25,9 +25,8 @@
             type="text"
             name="name"
             id="name"
-            placeholder="Enter the name of a country, capital or continent"
+            placeholder="Enter country's name or capital"
             autocomplete="off"
-            required
           />
 
           <div class="searchButtons">
@@ -51,16 +50,18 @@
             <input type="radio" name="search" id="continent-btn" />
             <label for="continent-btn">By continent</label>
 
-            <select name="search" id="continent-select">
-              <option value="">-- Select a region --</option>
-              <option value="africa">Africa</option>
-              <option value="america">Americas</option>
-              <option value="asia">Asia</option>
-              <option value="europe">Europe</option>
-              <option value="spider">Oceania</option>
+            <select name="region" id="continent-select">
+              <option value="" selected disabled>-- Select a region --</option>
+              <option>Africa</option>
+              <option>Americas</option>
+              <option>Asia</option>
+              <option>Europe</option>
+              <option>Oceania</option>
             </select>
           </div>
         </div>
+
+        <span class="errorMsg">Select a region in the list</span>
       </form>
 
       <div id="loader"></div>
