@@ -56,8 +56,10 @@ $().ready(() => {
   }
 
   //* Collect API data when submitting form
-  $("form").submit(function (e) {
+  $("form").submit((e) => {
     e.preventDefault();
+
+    $(".country").remove();
 
     getAllCountries();
   });
