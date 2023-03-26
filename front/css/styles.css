@@ -57,6 +57,10 @@ input[type=text] {
     font-size: 1.5rem;
     padding-left: 0.5rem;
 }
+input[type=text]::placeholder {
+    font-size: 1.4rem;
+    font-style: italic;
+}
 .searchButtons {
     width: 325px;
     width: 40%;
@@ -85,12 +89,16 @@ input[type=text] {
 #btnReset {
     background: #ffc831;
 }
-.error-message {
+.inputErrorMsg, .selectErrorMsg {
     font-size: 1.5rem;
-    font-style: italic;
     color: crimson;
-    margin-bottom: 1rem;
     /* display: none; */
+}
+.inputErrorMsg {
+    margin-bottom: 1rem;
+}
+.selectErrorMsg {
+    margin-top: 1rem;
 }
 .input-radio-group {
     margin-right: 3rem;

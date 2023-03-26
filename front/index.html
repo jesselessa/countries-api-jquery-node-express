@@ -8,25 +8,26 @@
     <link rel="icon" type="image/png" href="./ressources/favicon-world.png" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <main class="homepage">
       <h1>Countries API</h1>
       <p class="source">
         Data collected from
-        <a href="https://restcountries.com/v3.1/all" target="_blank"
-          >https://restcountries.com/v3.1/all</a
+        <a href="https://restcountries.com/" target="_blank"
+          >https://restcountries.com/</a
         >
       </p>
 
       <form>
-        <span class="error-message">Enter a valid name</span>
+        <span class="inputErrorMsg">⚠️ Enter a valid name</span>
 
         <div class="input-text-group">
           <input
             type="text"
             name="name"
             id="name"
-            placeholder="Enter a country/capital name"
+            placeholder="Enter the name of a country, capital or continent"
             required
           />
 
@@ -38,34 +39,30 @@
 
         <div class="radioButtons">
           <div class="input-radio-group">
-            <input
-              type="radio"
-              name="search"
-              id="rad1"
-              value="country"
-              checked
-            />
-            <label for="rad1">By country</label>
+            <input type="radio" name="search" id="country-btn" checked />
+            <label for="country-btn">By country</label>
           </div>
 
           <div class="input-radio-group">
-            <input type="radio" name="search" id="rad2" value="capital" />
-            <label for="rad2">By capital</label>
+            <input type="radio" name="search" id="capital-btn" />
+            <label for="capital-btn">By capital</label>
           </div>
 
           <div class="input-radio-group">
-            <input type="radio" name="search" id="rad3" value="capital" />
-            <label for="rad3">By continent</label>
-            <select name="search" id="continent">
-              <option value="">-- Select a subregion --</option>
+            <input type="radio" name="search" id="continent-btn" />
+            <label for="continent-btn">By continent</label>
+
+            <!-- <select name="search" id="continent-select">
+              <option value="">-- Select a region --</option>
               <option value="africa">Africa</option>
               <option value="america">Americas</option>
               <option value="asia">Asia</option>
               <option value="europe">Europe</option>
               <option value="spider">Oceania</option>
-            </select>
+            </select> -->
           </div>
         </div>
+        <span class="selectErrorMsg">⚠️ Select a region</span>
       </form>
 
       <div class="result">
