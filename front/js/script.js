@@ -44,16 +44,19 @@ $().ready(() => {
     });
   }
 
-  //* Display list of all countries after loading the page
-  $.ajax({
-    url: "https://restcountries.com/v3.1/all",
-    dataType: "json",
-    success: populateCountryInfo,
-    error: (error) => {
-      console.log(error);
-      alert("A problem occured. Come back later.");
-    },
-  });
+  //* Display list of all countries
+  function displayAllCountries() {
+    $.ajax({
+      url: "https://restcountries.com/v3.1/all",
+      dataType: "json",
+      success: populateCountryInfo,
+      error: (error) => {
+        console.log(error);
+        alert("A problem occured. Come back later.");
+      },
+    });
+  }
+  displayAllCountries();
 
   //* Display data when submitting form
   function showData() {
@@ -65,7 +68,6 @@ $().ready(() => {
       getAllCountries();
     });
   }
-
   showData();
 
   //* Reset form
@@ -74,17 +76,8 @@ $().ready(() => {
       $("form")[0].reset();
       $("#countriesList").empty();
 
-      $.ajax({
-        url: "https://restcountries.com/v3.1/all",
-        dataType: "json",
-        success: populateCountryInfo,
-        error: (error) => {
-          console.log(error);
-          alert("A problem occured. Come back later.");
-        },
-      });
+      displayAllCountries();
     });
   }
-
   reset();
 });
