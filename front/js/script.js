@@ -1,7 +1,7 @@
 //! The ready function executes the code after the DOM is fully loaded
 
 $().ready(() => {
-  //* Function populateCountryInfo
+  //* Populate countries info
   function populateCountryInfo(data) {
     data.forEach((country) => {
       $("#countriesList").append(`
@@ -18,18 +18,7 @@ $().ready(() => {
     });
   }
 
-  //* Display list of all countries after loading the page
-  $.ajax({
-    url: "https://restcountries.com/v3.1/all",
-    dataType: "json",
-    success: populateCountryInfo,
-    error: (error) => {
-      console.log(error);
-      alert("A problem occured. Come back later.");
-    },
-  });
-
-  //* Function getAllCountries with a dynamic URL
+  //* Get countries info by name, capital or continent
   function getAllCountries() {
     let url,
       inputValue = $("#name").val(); // To retrieve value of input
@@ -55,12 +44,47 @@ $().ready(() => {
     });
   }
 
-  //* Collect API data when submitting form
-  $("form").submit((e) => {
-    e.preventDefault();
-
-    $(".country").remove();
-
-    getAllCountries();
+  //* Display list of all countries after loading the page
+  $.ajax({
+    url: "https://restcountries.com/v3.1/all",
+    dataType: "json",
+    success: populateCountryInfo,
+    error: (error) => {
+      console.log(error);
+      alert("A problem occured. Come back later.");
+    },
   });
+
+  //* Display data when submitting form
+  function showData() {
+    $("form").submit((e) => {
+      e.preventDefault();
+
+      $(".country").remove();
+
+      getAllCountries();
+    });
+  }
+
+  showData();
+
+  //* Reset form
+  function reset() {
+    $("#btnReset").click(() => {
+      $("form")[0].reset();
+      $("#countriesList").empty();
+
+      $.ajax({
+        url: "https://restcountries.com/v3.1/all",
+        dataType: "json",
+        success: populateCountryInfo,
+        error: (error) => {
+          console.log(error);
+          alert("A problem occured. Come back later.");
+        },
+      });
+    });
+  }
+
+  reset();
 });
