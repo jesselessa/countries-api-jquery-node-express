@@ -111,12 +111,6 @@ input[type=radio]:hover {
 select {
     height: 35px;
 }
-.errorMsg {
-    display: none;
-    font-size: 1.5rem;
-    color: crimson;
-    margin-top: 1rem;
-}
 .result {
     width: 500px;
     display: flex;
@@ -162,6 +156,11 @@ select {
   }
 
 /*! MEDIA QUERIES */
+@media screen and (min-width: 767px) {
+    .errorMsg {
+        text-align: right;   
+    }    
+}
 @media screen and (max-width: 766px) {
     .homepage {
         padding: 3rem 1rem;
@@ -187,7 +186,6 @@ select {
         margin-right: 0;
     }
 }
-
 @media screen and (max-width: 377px) {
     .source {
         font-size: 1.6rem;    

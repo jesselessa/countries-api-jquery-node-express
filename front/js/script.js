@@ -36,8 +36,6 @@ $().ready(() => {
     $("form").submit((e) => {
       e.preventDefault();
 
-      
-
       $(".country").remove();
 
       showSpinner(); // Display spinner
@@ -94,8 +92,9 @@ $().ready(() => {
       error: (error) => {
         console.log(error);
         alert(
-          "A problem occured. First, make sure you selected the right category or entered a valid name. If so, come back later."
+          "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
+        showAllCountries(); // Return to default page (homepage)
       },
     });
   }
