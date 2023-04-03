@@ -15,8 +15,8 @@ $().ready(() => {
   showAllCountries();
 
   //* Populate countries info
-  function populateCountryInfo(data) {
-    data.forEach((country) => {
+  function populateCountryInfo(countries) {
+    countries.forEach((country) => {
       $("#countriesList").append(`
       <li class="country">
         <div class="countryInfo">
@@ -31,14 +31,16 @@ $().ready(() => {
     });
   }
 
-  //* Display data when submitting form
+  //* Display countries when submitting form
   function showData() {
     $("form").submit((e) => {
       e.preventDefault();
 
-      $(".country").remove();
+      $(".country").remove(); // Empty list
 
-      showSpinner(); // Display spinner
+      $(".errorMsg").css("display", "none"); // Hide error message
+
+      showSpinner();
 
       setTimeout(hideSpinner, 1000); // After 1 second delay, hide spinner
 
@@ -60,7 +62,7 @@ $().ready(() => {
   function reset() {
     $("#btnReset").click(() => {
       $("form")[0].reset();
-      $("#countriesList").empty(); // To remove data previously displayed
+      $("#countriesList").empty(); // To remove countries previously displayed
 
       showAllCountries();
     });
@@ -94,8 +96,24 @@ $().ready(() => {
         alert(
           "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
-        showAllCountries(); // Return to default page (homepage)
+        showAllCountries(); // Return to list of all countries
       },
     });
   }
+
+  function handleErrorMsg() {
+    $(".input-radio-group:nth-child(3) input").click(() => {
+      $(".errorMsg").css("display", "block");
+      $("#name").prop("disabled", true); // Disable text input
+    });
+
+    $(".input-radio-group input").click((e) => {
+      if (!$(e.target).is(".input-radio-group:nth-child(3) input")) {
+        // All radio buttons except the continent one
+        $(".errorMsg").css("display", "none");
+        $("#name").prop("disabled", false); // Enable text input
+      }
+    });
+  }
+  handleErrorMsg();
 });
