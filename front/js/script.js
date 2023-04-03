@@ -24,7 +24,7 @@ $().ready(() => {
           <p><span>Capital(s) :</span> ${country.capital}</p>
           <p class="currency"><span>Continent :</span> ${country.region}</p>
             <p><span>Currency(ies) :</span> ${
-              country.currencies && Object.keys(country.currencies) //! If no short-circuit operator, warning message
+              country.currencies && Object.keys(country.currencies) // If no short-circuit operator, warning message
             }</p>
         </div>
       </li>`);
@@ -38,13 +38,12 @@ $().ready(() => {
 
       $(".country").remove(); // Empty list
 
-      $(".errorMsg").css("display", "none"); // Hide error message
-
+      $(".errorMsg").css("display", "none"); 
       showSpinner();
 
-      setTimeout(hideSpinner, 1000); // After 1 second delay, hide spinner
+      setTimeout(hideSpinner, 1000);
 
-      setTimeout(getAllCountries, 1000); // After 1 second delay, display data
+      setTimeout(getAllCountries, 1000); 
     });
   }
   showData();
@@ -61,8 +60,8 @@ $().ready(() => {
   //* Reset form
   function reset() {
     $("#btnReset").click(() => {
-      $("form")[0].reset();
-      $("#countriesList").empty(); // To remove countries previously displayed
+      $("form")[0].reset(); //  $("form").reset() doesn't work because reset is a JS method, so jQuery object must be turned into a JS one
+      $("#countriesList").empty(); 
 
       showAllCountries();
     });
@@ -96,7 +95,7 @@ $().ready(() => {
         alert(
           "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
-        showAllCountries(); // Return to list of all countries
+        showAllCountries(); 
       },
     });
   }
@@ -104,14 +103,14 @@ $().ready(() => {
   function handleErrorMsg() {
     $(".input-radio-group:nth-child(3) input").click(() => {
       $(".errorMsg").css("display", "block");
-      $("#name").prop("disabled", true); // Disable text input
+      $("#name").prop("disabled", true); 
     });
 
     $(".input-radio-group input").click((e) => {
       if (!$(e.target).is(".input-radio-group:nth-child(3) input")) {
         // All radio buttons except the continent one
         $(".errorMsg").css("display", "none");
-        $("#name").prop("disabled", false); // Enable text input
+        $("#name").prop("disabled", false); 
       }
     });
   }
