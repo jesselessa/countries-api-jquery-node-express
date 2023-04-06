@@ -140,6 +140,15 @@ select {
     font-weight: bold;
     color: teal;
 }
+#map { 
+    height: 180px; 
+}
+#map ul {
+    list-style: square;
+}
+#map ul span {
+    font-weight: bold;
+}
 .errorMsg {
     display: none;
     color: crimson;

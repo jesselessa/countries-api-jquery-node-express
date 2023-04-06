@@ -16,6 +16,8 @@ $().ready(() => {
 
   //* Populate countries info
   function populateCountryInfo(countries) {
+    console.log(countries);
+
     countries.forEach((country) => {
       $("#countriesList").append(`
       <li class="country">
@@ -23,11 +25,43 @@ $().ready(() => {
           <p><span>Country :</span> ${country.name.common}</p>
           <p><span>Capital(s) :</span> ${country.capital}</p>
           <p class="currency"><span>Continent :</span> ${country.region}</p>
-            <p><span>Currency(ies) :</span> ${
-              country.currencies && Object.keys(country.currencies) // If no short-circuit operator, warning message
-            }</p>
+          <p><span>Currency(ies) :</span> ${
+            country.currencies && Object.keys(country.currencies) // If no short-circuit operator, warning message
+          }</p>
+          <div id="map"></div>
         </div>
       </li>`);
+
+      initMap();
+
+      //* Display map with Leaflet and OpenMapStreet
+      function initMap() {
+        var latlng = country.latlng; // Array with lat and long
+        var map;
+
+        var OSMUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        var OSMAttribution =
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        // Create a tile (map)
+        if (map !== undefined) map.remove();
+        map = L.map("map").setView(latlng, 13); // 13 = zoom
+
+        // Add a layer
+        L.tileLayer(OSMUrl, {
+          maxZoom: 19,
+          attribution: OSMAttribution,
+        }).addTo(map);
+
+        // Add a marker
+        L.marker(latlng)
+          .addTo(map)
+          .bindPopup(
+            `<h3>Coordinates :</h3><ul><li><span>Latitude :</span> ${latlng[0]}</li><li><span>Longitude :</span> ${latlng[1]}</li></ul>`
+          )
+          .openPopup();
+      }
     });
   }
 
@@ -38,12 +72,11 @@ $().ready(() => {
 
       $(".country").remove(); // Empty list
 
-      $(".errorMsg").css("display", "none"); 
       showSpinner();
 
       setTimeout(hideSpinner, 1000);
 
-      setTimeout(getAllCountries, 1000); 
+      setTimeout(getAllCountries, 1000);
     });
   }
   showData();
@@ -61,7 +94,7 @@ $().ready(() => {
   function reset() {
     $("#btnReset").click(() => {
       $("form")[0].reset(); //  $("form").reset() doesn't work because reset is a JS method, so jQuery object must be turned into a JS one
-      $("#countriesList").empty(); 
+      $("#countriesList").empty();
 
       showAllCountries();
     });
@@ -95,7 +128,10 @@ $().ready(() => {
         alert(
           "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
-        showAllCountries(); 
+
+        $(".errorMsg").css("display", "none");
+
+        showAllCountries();
       },
     });
   }
@@ -103,14 +139,14 @@ $().ready(() => {
   function handleErrorMsg() {
     $(".input-radio-group:nth-child(3) input").click(() => {
       $(".errorMsg").css("display", "block");
-      $("#name").prop("disabled", true); 
+      $("#name").prop("disabled", true);
     });
 
     $(".input-radio-group input").click((e) => {
       if (!$(e.target).is(".input-radio-group:nth-child(3) input")) {
         // All radio buttons except the continent one
         $(".errorMsg").css("display", "none");
-        $("#name").prop("disabled", false); 
+        $("#name").prop("disabled", false);
       }
     });
   }
