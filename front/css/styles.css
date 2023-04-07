@@ -39,7 +39,7 @@ form {
     width: 750px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 .input-text-group, .radioButtons {
     width: 100%;
@@ -91,11 +91,9 @@ input[type=text]::placeholder {
 #btnReset {
     background: #ffc831;
 }
-
 .searchButtons, .radioButtons {
     justify-content: space-between;
 }
-
 .input-radio-group {
     margin-right: 3rem;
 }
@@ -122,10 +120,15 @@ select {
     flex-direction: column;
 }
 #countriesList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     list-style-type: none;
 }
 .country {
-    border: 0.2px solid black;
+    width: 360px;
+    height: auto;
+    border: 0.1rem solid black;
     border-radius: 0.5rem;
     background: white;
     padding: 1rem;
@@ -140,14 +143,16 @@ select {
     font-weight: bold;
     color: teal;
 }
-#map { 
-    height: 180px; 
+.cont-img {
+    width: 100%;
+    height: auto;
+    margin: 1rem auto;
 }
-#map ul {
-    list-style: square;
-}
-#map ul span {
-    font-weight: bold;
+.countryInfo img {
+    object-fit: cover; 
+    width: 100%; 
+    max-height: 100%;  
+    border: 0.08rem solid black;
 }
 .errorMsg {
     display: none;
@@ -204,6 +209,11 @@ select {
     }
     .input-radio-group {
         margin-right: 0;
+    }
+}
+@media screen and (max-width: 400px) { 
+    .country {
+        width: 100%;    
     }
 }
 @media screen and (max-width: 377px) {

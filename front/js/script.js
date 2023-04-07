@@ -25,43 +25,14 @@ $().ready(() => {
           <p><span>Country :</span> ${country.name.common}</p>
           <p><span>Capital(s) :</span> ${country.capital}</p>
           <p class="currency"><span>Continent :</span> ${country.region}</p>
-          <p><span>Currency(ies) :</span> ${
-            country.currencies && Object.keys(country.currencies) // If no short-circuit operator, warning message
-          }</p>
-          <div id="map"></div>
+
+          <div class="cont-img"><img src=${
+            (country.flags && country.flags.svg) ||
+            (country.flags && country.flags.png)
+          } alt="flag"></div>
+          
         </div>
       </li>`);
-
-      initMap();
-
-      //* Display map with Leaflet and OpenMapStreet
-      function initMap() {
-        var latlng = country.latlng; // Array with lat and long
-        var map;
-
-        var OSMUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
-
-        var OSMAttribution =
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-
-        // Create a tile (map)
-        if (map !== undefined) map.remove();
-        map = L.map("map").setView(latlng, 13); // 13 = zoom
-
-        // Add a layer
-        L.tileLayer(OSMUrl, {
-          maxZoom: 19,
-          attribution: OSMAttribution,
-        }).addTo(map);
-
-        // Add a marker
-        L.marker(latlng)
-          .addTo(map)
-          .bindPopup(
-            `<h3>Coordinates :</h3><ul><li><span>Latitude :</span> ${latlng[0]}</li><li><span>Longitude :</span> ${latlng[1]}</li></ul>`
-          )
-          .openPopup();
-      }
     });
   }
 
