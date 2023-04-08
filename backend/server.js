@@ -5,7 +5,6 @@ const app = express();
 const countriesData = require("./countriesData.json");
 
 //--------------- ROUTES ---------------//
-
 //* Root page
 app.get("/", (_req, res) => {
   res.status(200).send("This is Countries API");
@@ -22,8 +21,16 @@ app.get("/all", (_req, res) => {
 app.get("/country/:country", (req, res) => {
   const country = countriesData.find((countryName) => {
     return (
-      countryName.name.common.toLowerCase().replace(" ", "") ===
-      req.params.country.toLowerCase().replace(" ", "")
+      countryName.name.common
+        .normalize("NFD") // Converts string to a normalized Unicode format
+        .replace(/[\u0300-\u036f]/g, "") // Replaces diacritical marks in the given Unicode range by empty strings
+        .replace(/\s+/g, "") // Removes white spaces
+        .toLowerCase() ===
+      req.params.country
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "")
+        .toLowerCase()
     );
   });
 
@@ -32,10 +39,20 @@ app.get("/country/:country", (req, res) => {
 
 //* Get a country by capital
 app.get("/capital/:capital", (req, res) => {
-  const capital = countriesData.find((capitalName) => {
+  const capital = countriesData.find((country) => {
     return (
-      capitalName.capital.toString().toLowerCase().replace(" ", "") ===
-      req.params.capital.toLowerCase().replace(" ", "")
+      country.capital
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "")
+        .toLowerCase() ===
+      req.params.capital
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, "")
+        .toLowerCase()
     );
   });
 
