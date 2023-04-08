@@ -50,14 +50,13 @@ app.get("/capital/:capital", (req, res) => {
   try {
     country = countriesData.find((country) => {
       return (
-        country.capital
+        (country.capital || "") // Fixes bug "cannot read properties of undefined"
           .toString()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .replace(/\s+/g, "")
           .toLowerCase() ===
         req.params.capital
-          .toString()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .replace(/\s+/g, "")
