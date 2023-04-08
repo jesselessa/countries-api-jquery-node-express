@@ -17,56 +17,77 @@ app.get("/all", (_req, res) => {
   });
 });
 
-//* Get a country by name
+//* Get country by name
 app.get("/country/:country", (req, res) => {
-  const country = countriesData.find((countryName) => {
-    return (
-      countryName.name.common
-        .normalize("NFD") // Converts string to a normalized Unicode format
-        .replace(/[\u0300-\u036f]/g, "") // Replaces diacritical marks in the given Unicode range by empty strings
-        .replace(/\s+/g, "") // Removes white spaces
-        .toLowerCase() ===
-      req.params.country
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "")
-        .toLowerCase()
-    );
-  });
+  let country;
+
+  try {
+    country = countriesData.find((countryName) => {
+      return (
+        countryName.name.common
+          .normalize("NFD") // Converts string to a normalized Unicode format
+          .replace(/[\u0300-\u036f]/g, "") // Replaces diacritical marks in the given Unicode range by empty strings
+          .replace(/\s+/g, "") // Removes white spaces
+          .toLowerCase() ===
+        req.params.country
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "")
+          .toLowerCase()
+      );
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: `${error}` });
+  }
 
   res.status(200).json(country);
 });
 
-//* Get a country by capital
+//* Get country by capital
 app.get("/capital/:capital", (req, res) => {
-  const capital = countriesData.find((country) => {
-    return (
-      country.capital
-        .toString()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "")
-        .toLowerCase() ===
-      req.params.capital
-        .toString()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "")
-        .toLowerCase()
-    );
-  });
+  let capital;
+
+  try {
+    capital = countriesData.find((country) => {
+      return (
+        country.capital
+          .toString()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "")
+          .toLowerCase() ===
+        req.params.capital
+          .toString()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "")
+          .toLowerCase()
+      );
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: `${error}` });
+  }
 
   res.status(200).json(capital);
 });
 
-//* Get a country by continent
+//* Get countries by continent
 app.get("/continent/:continent", (req, res) => {
-  const countries = countriesData.filter((country) => {
-    return (
-      country.region.toLowerCase().replace(" ", "") ===
-      req.params.continent.toLowerCase().replace(" ", "")
-    );
-  });
+  let countries;
+
+  try {
+    countries = countriesData.filter((country) => {
+      return (
+        country.region.toLowerCase().replace(" ", "") ===
+        req.params.continent.toLowerCase().replace(" ", "")
+      );
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: `${error}` });
+  }
 
   res.status(200).json(countries);
 });
