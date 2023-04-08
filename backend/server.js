@@ -7,11 +7,7 @@ const countriesData = require("./countriesData.json");
 //--------------- ROUTES ---------------//
 //* Root page
 app.get("/", (_req, res) => {
-  res
-    .status(200)
-    .send(
-      "This is Countries API built by Jessica Elessa with data reproduced from REST Countries API."
-    );
+  res.status(200).send("Countries API created by Jessica Elessa");
 });
 
 //* Get all countries
