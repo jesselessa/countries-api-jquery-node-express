@@ -1,13 +1,17 @@
 //--------------- EXPRESS ---------------//
 const express = require("express");
 const app = express();
-//-------------- JSON -------------------//
+//---------------- DATA -------------------//
 const countriesData = require("./countriesData.json");
 
 //--------------- ROUTES ---------------//
 //* Root page
 app.get("/", (_req, res) => {
-  res.status(200).send("This is Countries API");
+  res
+    .status(200)
+    .send(
+      "This is Countries API built by Jessica Elessa with data reproduced from REST Countries API."
+    );
 });
 
 //* Get all countries
@@ -36,20 +40,19 @@ app.get("/country/:country", (req, res) => {
           .toLowerCase()
       );
     });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ error: `${error}` });
-  }
 
-  res.status(200).json(country);
+    res.status(200).json(country);
+  } catch (error) {
+    res.status(400).json({ error: `${error}` });
+  }
 });
 
 //* Get country by capital
 app.get("/capital/:capital", (req, res) => {
-  let capital;
+  let country;
 
   try {
-    capital = countriesData.find((country) => {
+    country = countriesData.find((country) => {
       return (
         country.capital
           .toString()
@@ -65,17 +68,15 @@ app.get("/capital/:capital", (req, res) => {
           .toLowerCase()
       );
     });
+    res.status(200).json(country);
   } catch (error) {
-    console.log(error);
-    return res.status(400).json({ error: `${error}` });
+    res.status(400).json({ error: `${error}` });
   }
-
-  res.status(200).json(capital);
 });
 
 //* Get countries by continent
 app.get("/continent/:continent", (req, res) => {
-  let countries;
+  let countries = null;
 
   try {
     countries = countriesData.filter((country) => {
@@ -84,12 +85,11 @@ app.get("/continent/:continent", (req, res) => {
         req.params.continent.toLowerCase().replace(" ", "")
       );
     });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ error: `${error}` });
-  }
 
-  res.status(200).json(countries);
+    res.status(200).json(countries);
+  } catch (error) {
+    res.status(400).json({ error: `${error}` });
+  }
 });
 
 //* Handle errors
