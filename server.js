@@ -1,13 +1,24 @@
-//--------------- EXPRESS ---------------//
 const express = require("express");
 const app = express();
-//---------------- DATA -------------------//
+const port = 8000;
+const cors = require("cors");
+//--------------- DATA ------------------//
 const countriesData = require("./countriesData.json");
+
+//------------- MIDDLEWARES -------------//
+app.use(cors({ origin: "http://localhost:8000" }));
+app.use(express.static("public"));
+// app.use("/css", express.static(__dirname + "public/css"));
+
+// Set views with EJS
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
 //--------------- ROUTES ---------------//
 //* Root page
 app.get("/", (_req, res) => {
-  res.status(200).send("Countries API created by Jessica Elessa");
+  res.render("index");
+  // res.sendFile(__dirname + "/views/index.html");
 });
 
 //* Get all countries
@@ -19,12 +30,12 @@ app.get("/all", (_req, res) => {
 
 //* Get country by name
 app.get("/country/:country", (req, res) => {
-  let country;
+  let countryName;
 
   try {
-    country = countriesData.find((countryName) => {
+    countryName = countriesData.find((country) => {
       return (
-        countryName.name.common
+        country.name.common
           .normalize("NFD") // Converts string to a normalized Unicode format
           .replace(/[\u0300-\u036f]/g, "") // Replaces diacritical marks in the given Unicode range by empty strings
           .replace(/\s+/g, "") // Removes white spaces
@@ -36,8 +47,7 @@ app.get("/country/:country", (req, res) => {
           .toLowerCase()
       );
     });
-
-    res.status(200).json(country);
+    return res.status(200).json(countryName);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   }
@@ -45,10 +55,10 @@ app.get("/country/:country", (req, res) => {
 
 //* Get country by capital
 app.get("/capital/:capital", (req, res) => {
-  let country;
+  let countryName;
 
   try {
-    country = countriesData.find((country) => {
+    countryName = countriesData.find((country) => {
       return (
         (country.capital || "") // Fixes bug "cannot read properties of undefined"
           .toString()
@@ -63,7 +73,8 @@ app.get("/capital/:capital", (req, res) => {
           .toLowerCase()
       );
     });
-    res.status(200).json(country);
+
+    return res.status(200).json(countryName);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   }
@@ -71,7 +82,7 @@ app.get("/capital/:capital", (req, res) => {
 
 //* Get countries by continent
 app.get("/continent/:continent", (req, res) => {
-  let countries = null;
+  let countries;
 
   try {
     countries = countriesData.filter((country) => {
@@ -80,8 +91,7 @@ app.get("/continent/:continent", (req, res) => {
         req.params.continent.toLowerCase().replace(" ", "")
       );
     });
-
-    res.status(200).json(countries);
+    return res.status(200).json(countries);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   }
@@ -92,7 +102,6 @@ app.get("*", (_req, res) => {
   res.status(404).send("Error 404 - Not found");
 });
 //----------- START SERVER ----------//
-const port = 8000;
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });

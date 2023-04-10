@@ -3,8 +3,7 @@ $().ready(() => {
   //* Display list of all countries
   function showAllCountries() {
     $.ajax({
-      url: "https://restcountries.com/v3.1/all",
-      dataType: "json",
+      url: "http://localhost:8000/all",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
@@ -18,7 +17,7 @@ $().ready(() => {
   function populateCountryInfo(countries) {
     console.log(countries);
 
-    countries.forEach((country) => {
+    Array.from(countries).forEach((country) => {
       $("#countriesList").append(`
       <li class="country">
         <div class="countryInfo">
@@ -79,20 +78,18 @@ $().ready(() => {
       selectOptionValue = $("#continent-select option:selected").text();
 
     if ($("#country-btn").is(":checked")) {
-      url = `https://restcountries.com/v3.1/name/${inputValue}`;
+      url = `http://localhost:8000/country/${inputValue}`;
     } else if ($("#capital-btn").is(":checked")) {
-      url = `https://restcountries.com/v3.1/capital/${inputValue}`;
+      url = `http://localhost:8000/capital/${inputValue}`;
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
-      url = `https://restcountries.com/v3.1/region/${selectOptionValue}`;
+      url = `http://localhost:8000/continent/${selectOptionValue}`;
     }
 
     $.ajax({
       url: url,
-      data: "application/x-www-form-urlencoded",
-      dataType: "json",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
