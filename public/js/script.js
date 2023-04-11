@@ -1,15 +1,17 @@
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
   //* Display list of all countries
-  function showAllCountries() {
-    $.ajax({
-      url: "http://localhost:8000/all",
+  async function showAllCountries() {
+    let result;
+    result = await $.ajax({
+      url: "https://restcountries.com/v3.1/all",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
         alert("A problem occured. Come back later.");
       },
     });
+    return result;
   }
   showAllCountries();
 
@@ -17,22 +19,23 @@ $().ready(() => {
   function populateCountryInfo(countries) {
     console.log(countries);
 
-    Array.from(countries).forEach((country) => {
-      $("#countriesList").append(`
+    for (i = 0; i < countries.length; i++) {
+      const countryTemplate = `
       <li class="country">
         <div class="countryInfo">
-          <p><span>Country :</span> ${country.name.common}</p>
-          <p><span>Capital(s) :</span> ${country.capital}</p>
-          <p class="currency"><span>Continent :</span> ${country.region}</p>
-
+          <p><span>Country :</span> ${countries[i].name.common}</p>
+          <p><span>Capital(s) :</span> ${countries[i].capital}</p>
+          <p class="currency"><span>Continent :</span> ${
+            countries[i].region
+          }</p>
           <div class="cont-img"><img src=${
-            (country.flags && country.flags.svg) ||
-            (country.flags && country.flags.png)
+            countries[i].flags && countries[i].flags.png
           } alt="flag"></div>
-          
         </div>
-      </li>`);
-    });
+      </li>`;
+
+      $("#countriesList").append(countryTemplate);
+    }
   }
 
   //* Display countries when submitting form
@@ -66,29 +69,32 @@ $().ready(() => {
       $("form")[0].reset(); //  $("form").reset() doesn't work because reset is a JS method, so jQuery object must be turned into a JS one
       $("#countriesList").empty();
 
+      $(".errorMsg").css("display", "none");
+
       showAllCountries();
     });
   }
   reset();
 
   //* Get countries info depending on checked radio button
-  function getAllCountries() {
+  async function getAllCountries() {
     let url,
       inputValue = $("#name").val(),
-      selectOptionValue = $("#continent-select option:selected").text();
+      selectOptionValue = $("#continent-select option:selected").text(),
+      result;
 
     if ($("#country-btn").is(":checked")) {
-      url = `http://localhost:8000/country/${inputValue}`;
+      url = `https://restcountries.com/v3.1/name/${inputValue}`;
     } else if ($("#capital-btn").is(":checked")) {
-      url = `http://localhost:8000/capital/${inputValue}`;
+      url = `https://restcountries.com/v3.1/capital/${inputValue}`;
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
-      url = `http://localhost:8000/continent/${selectOptionValue}`;
+      url = `https://restcountries.com/v3.1/region/${selectOptionValue}`;
     }
 
-    $.ajax({
+    result = await $.ajax({
       url: url,
       success: populateCountryInfo,
       error: (error) => {
@@ -96,12 +102,9 @@ $().ready(() => {
         alert(
           "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
-
-        $(".errorMsg").css("display", "none");
-
-        showAllCountries();
       },
     });
+    return result;
   }
 
   function handleErrorMsg() {

@@ -3,14 +3,14 @@ const app = express();
 const port = 8000;
 const cors = require("cors");
 //--------------- DATA ------------------//
-const countriesData = require("./countriesData.json");
+const countriesData = require("./database/countriesData.json");
 
 //------------- MIDDLEWARES -------------//
-app.use(cors({ origin: "http://localhost:8000" }));
+app.use(cors());
 app.use(express.static("public"));
 // app.use("/css", express.static(__dirname + "public/css"));
 
-// Set views with EJS
+//--------- SET VIEWS WITH EJS ---------//
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
