@@ -23,17 +23,25 @@ app.get("/", (_req, res) => {
 
 //* Get all countries
 app.get("/all", (_req, res) => {
-  res.status(200).json({
-    countriesData,
-  });
+  let countries;
+
+  try {
+    countries = countriesData.map((country) => {
+      return country;
+    });
+
+    return res.status(200).json(countries);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //* Get country by name
 app.get("/country/:country", (req, res) => {
-  let countryName;
+  let countries;
 
   try {
-    countryName = countriesData.find((country) => {
+    countries = countriesData.filter((country) => {
       return (
         country.name.common
           .normalize("NFD") // Converts string to a normalized Unicode format
@@ -47,7 +55,8 @@ app.get("/country/:country", (req, res) => {
           .toLowerCase()
       );
     });
-    return res.status(200).json(countryName);
+
+    return res.status(200).json(countries);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   }
@@ -55,10 +64,10 @@ app.get("/country/:country", (req, res) => {
 
 //* Get country by capital
 app.get("/capital/:capital", (req, res) => {
-  let countryName;
+  let countries;
 
   try {
-    countryName = countriesData.find((country) => {
+    countries = countriesData.filter((country) => {
       return (
         (country.capital || "") // Fixes bug "cannot read properties of undefined"
           .toString()
@@ -74,7 +83,7 @@ app.get("/capital/:capital", (req, res) => {
       );
     });
 
-    return res.status(200).json(countryName);
+    return res.status(200).json(countries);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   }

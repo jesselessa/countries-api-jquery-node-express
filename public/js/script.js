@@ -4,7 +4,7 @@ $().ready(() => {
   async function showAllCountries() {
     let result;
     result = await $.ajax({
-      url: "https://restcountries.com/v3.1/all",
+      url: "http://localhost:8000/all",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
@@ -16,20 +16,19 @@ $().ready(() => {
   showAllCountries();
 
   //* Populate countries info
-  function populateCountryInfo(countries) {
-    console.log(countries);
+  function populateCountryInfo(data) {
+    console.log(data); // countries = data
 
-    for (i = 0; i < countries.length; i++) {
+    for (i = 0; i < data.length; i++) {
       const countryTemplate = `
       <li class="country">
         <div class="countryInfo">
-          <p><span>Country :</span> ${countries[i].name.common}</p>
-          <p><span>Capital(s) :</span> ${countries[i].capital}</p>
-          <p class="currency"><span>Continent :</span> ${
-            countries[i].region
-          }</p>
+          <p><span>Country :</span> ${data[i].name.common}</p>
+          <p><span>Capital(s) :</span> ${data[i].capital}</p>
+          <p class="currency"><span>Continent :</span> ${data[i].region}</p>
           <div class="cont-img"><img src=${
-            countries[i].flags && countries[i].flags.png
+            (data[i].flags && data[i].flags.png) ||
+            (data[i].flags && data[i].flags.svg)
           } alt="flag"></div>
         </div>
       </li>`;
@@ -84,21 +83,21 @@ $().ready(() => {
       result;
 
     if ($("#country-btn").is(":checked")) {
-      url = `https://restcountries.com/v3.1/name/${inputValue}`;
+      url = `http://localhost:8000/country/${inputValue}`;
     } else if ($("#capital-btn").is(":checked")) {
-      url = `https://restcountries.com/v3.1/capital/${inputValue}`;
+      url = `http://localhost:8000/capital/${inputValue}`;
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
-      url = `https://restcountries.com/v3.1/region/${selectOptionValue}`;
+      url = `http://localhost:8000/continent/${selectOptionValue}`;
     }
 
     result = await $.ajax({
       url: url,
       success: populateCountryInfo,
       error: (error) => {
-        console.log(error);
+        console.error(error);
         alert(
           "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
         );
