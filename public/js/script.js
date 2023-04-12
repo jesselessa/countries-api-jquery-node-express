@@ -3,12 +3,12 @@ $().ready(() => {
   //* Display list of all countries
   async function showAllCountries() {
     let result;
+
     result = await $.ajax({
       url: "http://localhost:8000/all",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
-        alert("A problem occured. Come back later.");
       },
     });
     return result;
@@ -17,7 +17,20 @@ $().ready(() => {
 
   //* Populate countries info
   function populateCountryInfo(data) {
-    console.log(data); // countries = data
+    console.log(data);
+
+    // Handle error message when no data found
+    if (data.length === 0) {
+      alert(
+        "No data found. First, make sure you entered a valid name or picked the right category or selected a region."
+      );
+
+      $("form")[0].reset();
+
+      $(".errorMsg").css("display", "none");
+
+      showAllCountries();
+    }
 
     for (i = 0; i < data.length; i++) {
       const countryTemplate = `
@@ -98,15 +111,12 @@ $().ready(() => {
       success: populateCountryInfo,
       error: (error) => {
         console.error(error);
-        alert(
-          "A problem occured. First, make sure you picked the right category or entered a valid name or selected a region. If so, come back later."
-        );
       },
     });
     return result;
   }
 
-  function handleErrorMsg() {
+  function handleContinentErrorMsg() {
     $(".input-radio-group:nth-child(3) input").click(() => {
       $(".errorMsg").css("display", "block");
       $("#name").prop("disabled", true);
@@ -120,5 +130,5 @@ $().ready(() => {
       }
     });
   }
-  handleErrorMsg();
+  handleContinentErrorMsg();
 });

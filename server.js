@@ -15,7 +15,7 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 //--------------- ROUTES ---------------//
-//* Root page
+//* Homepage
 app.get("/", (_req, res) => {
   res.render("index");
   // res.sendFile(__dirname + "/views/index.html");
@@ -29,7 +29,6 @@ app.get("/all", (_req, res) => {
     countries = countriesData.map((country) => {
       return country;
     });
-
     return res.status(200).json(countries);
   } catch (error) {
     console.log(error);
@@ -55,7 +54,6 @@ app.get("/country/:country", (req, res) => {
           .toLowerCase()
       );
     });
-
     return res.status(200).json(countries);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
@@ -82,7 +80,6 @@ app.get("/capital/:capital", (req, res) => {
           .toLowerCase()
       );
     });
-
     return res.status(200).json(countries);
   } catch (error) {
     res.status(400).json({ error: `${error}` });
