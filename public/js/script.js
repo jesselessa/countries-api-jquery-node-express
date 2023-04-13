@@ -9,25 +9,29 @@ $().ready(() => {
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
+        alert("A problem occured. Come back later.");
       },
     });
     return result;
   }
   showAllCountries();
 
+  //* Handle error message when no data found
+  function handleNoDataFound() {
+    alert(
+      "No data found. First, make sure you entered a valid name or picked the right category or selected a region. If so, come back later."
+    );
+    
+    $("form")[0].reset();
+
+    $(".errorMsg").css("display", "none");
+  }
+
   //* Populate countries info
   function populateCountryInfo(data) {
-    console.log(data);
-    // Handle error message when no data found
+    // console.log(data);
     if (data.length === 0) {
-      alert(
-        "No data found. First, make sure you entered a valid name or picked the right category or selected a region."
-      );
-
-      $("form")[0].reset();
-
-      $(".errorMsg").css("display", "none");
-
+      handleNoDataFound();
       showAllCountries();
     }
 
@@ -80,6 +84,7 @@ $().ready(() => {
   function reset() {
     $("#btnReset").click(() => {
       $("form")[0].reset(); //  $("form").reset() doesn't work because reset is a JS method, so jQuery object must be turned into a JS one
+
       $("#countriesList").empty();
 
       $(".errorMsg").css("display", "none");
@@ -112,6 +117,8 @@ $().ready(() => {
       success: populateCountryInfo,
       error: (error) => {
         console.error(error);
+        handleNoDataFound();
+        showAllCountries();
       },
     });
     return result;

@@ -8,7 +8,6 @@ const countriesData = require("./database/countriesData.json");
 //------------- MIDDLEWARES -------------//
 app.use(cors());
 app.use(express.static("public"));
-// app.use("/css", express.static(__dirname + "public/css"));
 
 //--------------- ROUTES ---------------//
 //* Homepage
