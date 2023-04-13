@@ -17,6 +17,7 @@ $().ready(() => {
 
   //* Populate countries info
   function populateCountryInfo(data) {
+    console.log(data);
     // Handle error message when no data found
     if (data.length === 0) {
       alert(
@@ -29,7 +30,7 @@ $().ready(() => {
 
       showAllCountries();
     }
-    
+
     // Generate list dynamically
     for (i = 0; i < data.length; i++) {
       const countryTemplate = `

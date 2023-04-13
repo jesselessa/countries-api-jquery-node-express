@@ -10,15 +10,10 @@ app.use(cors());
 app.use(express.static("public"));
 // app.use("/css", express.static(__dirname + "public/css"));
 
-//--------- SET VIEWS WITH EJS ---------//
-app.set("views", "./views");
-app.set("view engine", "ejs");
-
 //--------------- ROUTES ---------------//
 //* Homepage
 app.get("/", (_req, res) => {
-  res.render("index");
-  // res.sendFile(__dirname + "/views/index.html");
+  res.sendFile("index.html");
 });
 
 //* Get all countries
