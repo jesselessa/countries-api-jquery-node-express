@@ -1,17 +1,20 @@
 {
-  "name": "backend",
+  "name": "countries-api-jquery-node-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "Creating a Countries API with jQuery, Node.js and Express",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "SET NODE_ENV=staging&& nodemon server.js",
+    "production": "SET NODE_ENV=production&& nodemon server.js"
+
   },
   "keywords": [],
-  "author": "",
+  "author": "Jessica Elessa",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
