@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
-// const cors = require("cors");
+const cors = require("cors");
 //--------------- DATA ------------------//
 const countriesData = require("./data/countriesData.json");
 
 //------------- MIDDLEWARES -------------//
-// app.use(cors());
+app.use(cors());
 app.use(express.static("public"));
 
 //--------------- ROUTES ---------------//
