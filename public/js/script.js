@@ -21,10 +21,12 @@ $().ready(() => {
     alert(
       "No data found. First, make sure you entered a valid name or picked the right category or selected a region. If so, come back later."
     );
-    
+
     $("form")[0].reset();
 
     $(".errorMsg").css("display", "none");
+
+    $("#name").prop("disabled", false);
   }
 
   //* Populate countries info
