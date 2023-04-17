@@ -7,7 +7,7 @@ const countriesData = require("./data/countriesData.json");
 
 //------------- MIDDLEWARES -------------//
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 //--------------- ROUTES ---------------//
 //* Homepage
@@ -17,7 +17,16 @@ app.get("/", (_req, res) => {
 
 //* Get all countries
 app.get("/all", (_req, res) => {
-  return res.status(200).json(countriesData);
+  let countries;
+
+  try {
+    countries = countriesData.map((country) => {
+      return country;
+    });
+    return res.status(200).json(countries);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 //* Get country by name
@@ -86,5 +95,5 @@ app.get("*", (_req, res) => {
 
 //----------- START SERVER ----------//
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server started on port ${port}`);
 });

@@ -1,13 +1,13 @@
 {
-  "name": "countries-api-jquery-node",
+  "name": "countries-api-jquery-node-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "Creating a Countries API with jQuery, Node.js and Express",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jessica Elessa",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
