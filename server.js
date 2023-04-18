@@ -17,16 +17,7 @@ app.get("/", (_req, res) => {
 
 //* Get all countries
 app.get("/all", (_req, res) => {
-  let countries;
-
-  try {
-    countries = countriesData.map((country) => {
-      return country;
-    });
-    return res.status(200).json(countries);
-  } catch (error) {
-    console.log(error);
-  }
+  return res.status(200).json(countriesData);
 });
 
 //* Get country by name
