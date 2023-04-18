@@ -5,7 +5,8 @@ $().ready(() => {
     let result;
 
     result = await $.ajax({
-      url: "http://localhost:8000/all",
+      url: "https://jesselessa-countries-api.cyclic.app/all",
+      // url: "http://localhost:8000/all",
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
@@ -104,14 +105,17 @@ $().ready(() => {
       result;
 
     if ($("#country-btn").is(":checked")) {
-      url = `http://localhost:8000/country/${inputValue}`;
+      url = `https://jesselessa-countries-api.cyclic.app/country/${inputValue}`;
+      // url = `http://localhost:8000/country/${inputValue}`;
     } else if ($("#capital-btn").is(":checked")) {
-      url = `http://localhost:8000/capital/${inputValue}`;
+      url = `https://jesselessa-countries-api.cyclic.app/capital/${inputValue}`;
+      // url = `http://localhost:8000/capital/${inputValue}`;
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
-      url = `http://localhost:8000/continent/${selectOptionValue}`;
+      url = `https://jesselessa-countries-api.cyclic.app/continent/${selectOptionValue}`;
+      // url = `http://localhost:8000/continent/${selectOptionValue}`;
     }
 
     result = await $.ajax({
