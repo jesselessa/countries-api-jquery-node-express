@@ -92,6 +92,8 @@ $().ready(() => {
 
       $(".errorMsg").css("display", "none");
 
+      $("#name").prop("disabled", false);
+
       showAllCountries();
     });
   }
