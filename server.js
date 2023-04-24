@@ -6,8 +6,8 @@ const cors = require("cors");
 const countriesData = require("./data/countriesData.json");
 
 //------------- MIDDLEWARES -------------//
-app.use(cors({ origin: "https://jesselessa-countries-api.cyclic.app/" }));
-// app.use(cors());
+// app.use(cors({ origin: "https://jesselessa-countries-api.cyclic.app/" }));
+app.use(cors());
 
 app.use(express.static("./public"));
 

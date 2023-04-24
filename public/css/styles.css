@@ -212,12 +212,12 @@ option:nth-child(1) {
         margin-right: 0;
     }
 }
-@media screen and (max-width: 592px) {
+/* @media screen and (max-width: 592px) {
     #button-top {
         width: 50px;
         height: 50px;
     }    
-}
+} */
 @media screen and (max-width: 400px) { 
     .country {
         width: 100%;    
