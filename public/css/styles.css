@@ -112,9 +112,13 @@ select {
     height: 35px;
     font-size: 1.5rem;
 }
-option:nth-child(1) {
-    text-align: center;
-} 
+select option:disabled
+{ 
+    color: teal;
+}
+input[type=text]:focus, select:focus {
+    outline: 0.15rem solid teal;    
+}
 .result {
     width: 500px;
     display: flex;
