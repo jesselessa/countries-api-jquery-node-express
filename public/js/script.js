@@ -1,5 +1,23 @@
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
+  //* Handle elevator button
+  const button = $("#button-top");
+
+  $(window).scroll(scrollFunction);
+  function scrollFunction() {
+    if ($(window).scrollTop() > 200) {
+      button.css("display", "block");
+    } else {
+      button.css("display", "none");
+    }
+  }
+
+  button.click(topFunction);
+  function topFunction() {
+    $(document.body).scrollTop(0);
+    $(document.documentElement).scrollTop(0);
+  }
+
   //* Display list of all countries
   async function showAllCountries() {
     let result;
@@ -86,7 +104,7 @@ $().ready(() => {
   //* Reset form
   function reset() {
     $("#btnReset").click(() => {
-      $("form")[0].reset(); //  $("form").reset() doesn't work because reset is a JS method, so jQuery object must be turned into a JS one
+      $("form")[0].reset(); // [0] => jQuery doesn’t have a reset() method, but native JS does; so, we convert the jQuery element into a JS one
 
       $("#countriesList").empty();
 

@@ -11,6 +11,14 @@ body {
     font-size: 1.6rem;
     background: #f3f6fb;
 }
+#button-top {
+    display: none;
+    position: fixed;
+    bottom: 10%;
+    right: 3%;
+    z-index: 100; 
+    cursor: pointer;
+}
 .homepage {
     min-height: 100vh;
     width: 100vw;
@@ -200,6 +208,12 @@ select {
     .input-radio-group {
         margin-right: 0;
     }
+}
+@media screen and (max-width: 592px) {
+    #button-top {
+        width: 50px;
+        height: 50px;
+    }    
 }
 @media screen and (max-width: 400px) { 
     .country {
