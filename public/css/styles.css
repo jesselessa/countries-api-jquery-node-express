@@ -52,6 +52,7 @@ form {
 input[type=text] {
     width: 65%;
     height: 40px;
+    font-size: 1.6rem;
     background: white;
     padding-left: 0.5rem;
     border: 0.1rem solid black;
