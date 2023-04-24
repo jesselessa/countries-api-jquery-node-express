@@ -20,7 +20,7 @@ body {
     cursor: pointer;
 }
 .homepage {
-    min-height: 100vh;
+    min-height: calc(100vh - 70px);
     width: 100vw;
     max-width: 100%;
     display: flex;
@@ -164,6 +164,19 @@ input[type=text]:focus, select:focus {
     color: crimson;
     font-size: 1.4rem;
     margin-top: 0.5rem;
+}
+footer {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    background: teal;
+    text-align: center;
+
+
 }
 /** Loader */
 #loader {
