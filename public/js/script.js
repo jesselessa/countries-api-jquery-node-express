@@ -1,22 +1,25 @@
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
-  //* Handle elevator button
-  const button = $("#button-top");
+  //* Elevator button
+  function handleElevatorBtn() {
+    const button = $("#button-top");
 
-  $(window).scroll(scrollFunction);
-  function scrollFunction() {
-    if ($(window).scrollTop() > 200) {
-      button.css("display", "block");
-    } else {
-      button.css("display", "none");
+    $(window).scroll(showElevatorBtn);
+    function showElevatorBtn() {
+      if ($(window).scrollTop() > 200) {
+        button.css("display", "block");
+      } else {
+        button.css("display", "none");
+      }
+    }
+
+    button.click(goToTop);
+    function goToTop() {
+      $(document.body).scrollTop(0);
+      $(document.documentElement).scrollTop(0);
     }
   }
-
-  button.click(topFunction);
-  function topFunction() {
-    $(document.body).scrollTop(0);
-    $(document.documentElement).scrollTop(0);
-  }
+  handleElevatorBtn();
 
   //* Display list of all countries
   async function showAllCountries() {
