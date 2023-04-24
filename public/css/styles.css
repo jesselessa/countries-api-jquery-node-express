@@ -52,7 +52,6 @@ form {
 input[type=text] {
     width: 65%;
     height: 40px;
-    font-size: 1.5rem;
     background: white;
     padding-left: 0.5rem;
     border: 0.1rem solid black;
@@ -111,7 +110,12 @@ input[type=radio]:hover {
 }
 select {
     height: 35px;
+    width: 190px;
+    font-size: 1.5rem;
 }
+option:nth-child(1) {
+    text-align: center;
+} 
 .result {
     width: 500px;
     display: flex;
@@ -221,9 +225,6 @@ select {
     }
 }
 @media screen and (max-width: 377px) {
-    .source {
-        font-size: 1.6rem;    
-    }
     .searchButtons {
         justify-content: space-between;    
     }

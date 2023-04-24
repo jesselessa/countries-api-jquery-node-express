@@ -104,7 +104,7 @@ $().ready(() => {
   //* Reset form
   function reset() {
     $("#btnReset").click(() => {
-      $("form")[0].reset(); // [0] => jQuery doesn’t have a reset() method, but native JS does; so, we convert the jQuery element into a JS one
+      $("form")[0].reset(); // [0] => jQuery doesn’t have a reset() method, but native JS does; so, we have to convert the jQuery element into a JS one
 
       $("#countriesList").empty();
 
