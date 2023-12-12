@@ -21,7 +21,8 @@ body {
   z-index: 100;
   cursor: pointer;
 }
-.homepage {
+main {
+  /* 70px = footer height */
   min-height: calc(100vh - 70px);
   width: 100vw;
   max-width: 100%;
@@ -176,9 +177,11 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  text-align: center;
+  min-height: 70px;
   background-color: teal;
   color: white;
+  padding: 1rem;
   gap: 0.8rem;
 }
 footer a {
@@ -214,7 +217,7 @@ footer a {
   }
 }
 @media screen and (max-width: 766px) {
-  .homepage {
+  main {
     padding: 3rem 1rem;
   }
   form,
@@ -238,6 +241,14 @@ footer a {
   }
   .input-radio-group {
     margin-right: 0;
+  }
+  footer {
+    height: auto;
+  }
+}
+@media screen and (max-width: 450px) {
+  footer {
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 400px) {
