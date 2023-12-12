@@ -1,234 +1,258 @@
-*, ::before, ::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    background: #f3f6fb;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  background: #f3f6fb;
 }
 #button-top {
-    display: none;
-    position: fixed;
-    bottom: 10%;
-    right: 3%;
-    z-index: 100; 
-    cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  z-index: 100;
+  cursor: pointer;
 }
 .homepage {
-    min-height: calc(100vh - 70px);
-    width: 100vw;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem;
+  min-height: calc(100vh - 70px);
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
 }
 h1 {
-    text-align: center;
-    color: teal;
-    margin-bottom: 5rem;
+  text-align: center;
+  color: teal;
+  margin-bottom: 5rem;
 }
 form {
-    width: 750px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 3rem;
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
 }
-.input-text-group, .radioButtons {
-    width: 100%;
-    display: flex;
-    align-items: center;
+.input-text-group,
+.radioButtons {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 .input-text-group {
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
 }
-input[type=text] {
-    width: 65%;
-    height: 40px;
-    font-size: 1.6rem;
-    background: white;
-    padding-left: 0.5rem;
-    border: 0.1rem solid black;
-    border-radius: 0.4rem;
+input[type="text"] {
+  width: 65%;
+  height: 40px;
+  font-size: 1.6rem;
+  background: white;
+  padding-left: 0.5rem;
+  border: 0.1rem solid black;
+  border-radius: 0.4rem;
 }
-input[type=text]::placeholder {
-    font-size: 1.4rem;
-    font-style: italic;
+input[type="text"]::placeholder {
+  font-size: 1.4rem;
+  font-style: italic;
 }
 .searchButtons {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  width: 35%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-#btnShowData, #btnReset {
-    width: 130px;
-    height: 40px;
-    font-size: 1.6rem;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    border: none;
-    letter-spacing: 0.1rem;
-    transition: transform 0.2s ease-in-out;
+#btnShowData,
+#btnReset {
+  width: 130px;
+  height: 40px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  letter-spacing: 0.1rem;
+  transition: transform 0.2s ease-in-out;
 }
-#btnShowData:hover, #btnReset:hover {
-    transform: scale(1.02);
-    cursor: pointer;
+#btnShowData:hover,
+#btnReset:hover {
+  transform: scale(1.02);
+  cursor: pointer;
 }
 #btnShowData {
-    background: teal;
-    color: white;
+  background: teal;
+  color: white;
 }
 #btnReset {
-    background: #ffc831;
+  background: #ffc831;
 }
-.searchButtons, .radioButtons {
-    justify-content: space-between;
+.searchButtons,
+.radioButtons {
+  justify-content: space-between;
 }
 .input-radio-group {
-    margin-right: 3rem;
+  margin-right: 3rem;
 }
-input[type=radio] {
-    transform: scale(1.2);
-    accent-color: teal;
-    margin-right: 0.5rem;
+input[type="radio"] {
+  transform: scale(1.2);
+  accent-color: teal;
+  margin-right: 0.5rem;
 }
-input[type=radio]:hover {
-    cursor: pointer;
+input[type="radio"]:hover {
+  cursor: pointer;
 }
 .input-radio-group:nth-child(3) {
-    margin-right: 0;
+  margin-right: 0;
 }
 .input-radio-group:nth-child(3) label {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 select {
-    height: 35px;
-    font-size: 1.5rem;
+  height: 35px;
+  font-size: 1.5rem;
 }
-select option:disabled
-{ 
-    color: teal;
+select option:disabled {
+  color: teal;
 }
-input[type=text]:focus, select:focus {
-    outline: 0.15rem solid teal;    
+input[type="text"]:focus,
+select:focus {
+  outline: 0.15rem solid teal;
 }
 .result {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 #countriesList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
 }
 .country {
-    width: 360px;
-    height: auto;
-    border: 0.1rem solid black;
-    border-radius: 0.5rem;
-    background: white;
-    padding: 1rem;
-    margin-bottom: 1rem;
+  width: 360px;
+  height: auto;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 .countryInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .countryInfo span {
-    font-weight: bold;
-    color: teal;
+  font-weight: bold;
+  color: teal;
 }
 .cont-img {
-    width: 100%;
-    height: auto;
-    margin: 1rem auto;
+  width: 100%;
+  height: auto;
+  margin: 1rem auto;
 }
 .countryInfo img {
-    object-fit: cover; 
-    width: 100%; 
-    max-height: 100%;  
-    border: 0.08rem solid black;
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+  border: 0.08rem solid black;
 }
 .errorMsg {
-    display: none;
-    color: crimson;
-    font-size: 1.4rem;
-    margin-top: 0.5rem;
+  display: none;
+  color: crimson;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: teal;
+  color: white;
+  gap: 0.8rem;
+}
+footer a {
+  margin-top: 0.5rem;
 }
 /** Loader */
 #loader {
-    display: none;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 2rem;
-    border: 0.3rem solid rgba(255, 200, 49, 0.4);
-    border-radius: 50%;
-    border-top-color: teal;
-    animation: spin 1s ease-in-out infinite;
-    -webkit-animation: spin 1s ease-in-out infinite;
-  }  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
+  display: none;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 2rem;
+  border: 0.3rem solid rgba(255, 200, 49, 0.4);
+  border-radius: 50%;
+  border-top-color: teal;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  @-webkit-keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
   }
+}
 
 /*! MEDIA QUERIES */
 @media screen and (min-width: 767px) {
-    .errorMsg {
-        text-align: right;   
-    }    
+  .errorMsg {
+    text-align: right;
+  }
 }
 @media screen and (max-width: 766px) {
-    .homepage {
-        padding: 3rem 1rem;
-    }
-    form, .result {
-        width: 100%;    
-    }
-    .input-text-group {
-        flex-direction: column;
-    }
-    input[type=text], .searchButtons {
-        width: 100%;
-    }
-    input[type=text] {
-        margin-bottom: 2rem;    
-    }
-    .radioButtons {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    .input-radio-group {
-        margin-right: 0;
-    }
+  .homepage {
+    padding: 3rem 1rem;
+  }
+  form,
+  .result {
+    width: 100%;
+  }
+  .input-text-group {
+    flex-direction: column;
+  }
+  input[type="text"],
+  .searchButtons {
+    width: 100%;
+  }
+  input[type="text"] {
+    margin-bottom: 2rem;
+  }
+  .radioButtons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .input-radio-group {
+    margin-right: 0;
+  }
 }
-@media screen and (max-width: 400px) { 
-    .country {
-        width: 100%;    
-    }
+@media screen and (max-width: 400px) {
+  .country {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 377px) {
-    .searchButtons {
-        justify-content: space-between;    
-    }
-    .input-radio-group:nth-child(3) {
-        flex-direction: column;
-    }
-    select {
-        margin-top: 1rem;
-    }
+  .searchButtons {
+    justify-content: space-between;
+  }
+  .input-radio-group:nth-child(3) {
+    flex-direction: column;
+  }
+  select {
+    margin-top: 1rem;
+  }
 }

@@ -168,4 +168,11 @@ $().ready(() => {
     });
   }
   handleContinentErrorMsg();
+
+  //* Dynamically add year to footer
+  function addYearToFooter() {
+    const currentYear = new Date().getFullYear();
+    $(".year").prepend(currentYear);
+  }
+  addYearToFooter();
 });
