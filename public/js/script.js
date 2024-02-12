@@ -1,8 +1,6 @@
-import config from "./config.js";
-
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
-  const API_URL = config.API_URL; // Replace by the value hidden in config.js file
+  const API_URL = "https://jesselessa-countries-api.cyclic.app"; // Replace by your own URL
 
   //* Elevator button
   function handleElevatorBtn() {

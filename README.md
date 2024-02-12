@@ -43,7 +43,7 @@ The technologies used in this project are:
 4. Inside the project directory :
    - Install dependencies : `npm install`
    - Start server : `node server.js`
-   - Open the `index.html` file in your browser.
+   - Open `index.html` file in your browser.
 
 ## Contributing
 
