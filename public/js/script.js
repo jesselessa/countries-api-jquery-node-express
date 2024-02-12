@@ -1,5 +1,9 @@
+import config from "./config.js";
+
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
+  const API_URL = config.API_URL; // Replace by the value hidden in config.js file
+
   //* Elevator button
   function handleElevatorBtn() {
     const button = $("#button-top");
@@ -26,8 +30,8 @@ $().ready(() => {
     let result;
 
     result = await $.ajax({
-      url: "https://jesselessa-countries-api.cyclic.app/all",
-      // url: "http://localhost:8000/all",
+      url: `${API_URL}/all`,
+      // url: "http://localhost:8000/all", // Use in development mode
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
@@ -53,7 +57,6 @@ $().ready(() => {
 
   //* Populate countries info
   function populateCountryInfo(data) {
-    // console.log(data);
     if (data.length === 0) {
       handleNoDataFound();
       showAllCountries();
@@ -128,17 +131,17 @@ $().ready(() => {
       result;
 
     if ($("#country-btn").is(":checked")) {
-      url = `https://jesselessa-countries-api.cyclic.app/country/${inputValue}`;
-      // url = `http://localhost:8000/country/${inputValue}`;
+      url = `${API_URL}/country/${inputValue}`;
+      // url = `http://localhost:8000/country/${inputValue}`; // Use in development mode
     } else if ($("#capital-btn").is(":checked")) {
-      url = `https://jesselessa-countries-api.cyclic.app/capital/${inputValue}`;
-      // url = `http://localhost:8000/capital/${inputValue}`;
+      url = `${API_URL}/capital/${inputValue}`;
+      // url = `http://localhost:8000/capital/${inputValue}`; // Use in development mode
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
-      url = `https://jesselessa-countries-api.cyclic.app/continent/${selectOptionValue}`;
-      // url = `http://localhost:8000/continent/${selectOptionValue}`;
+      url = `${API_URL}/continent/${selectOptionValue}`;
+      // url = `http://localhost:8000/continent/${selectOptionValue}`; // Use in development mode
     }
 
     result = await $.ajax({
