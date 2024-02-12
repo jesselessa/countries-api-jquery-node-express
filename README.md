@@ -19,12 +19,12 @@ You can see the project live demo [here](https://jesselessa-countries-api.cyclic
 
 ## Stack
 
-The technologies used in this project are:
+The technologies used in this project are :
 
-- HTML, CSS
-- jQuery
-- Node.js
-- Express.js
+- HTML and CSS,
+- jQuery,
+- Node.js,
+- Express.js.
 
 ## Screenshot
 
@@ -55,7 +55,7 @@ To stay updated with the project latest changes, you can pull them from the repo
 
 ## Contact
 
-For inquiries or further information, you can contact me via [LinkedIn](https://www.linkedin.com/in/jessica-elessa/).
+For inquiries, you can contact me via [LinkedIn](https://www.linkedin.com/in/jessica-elessa/).
 
 ---
 
