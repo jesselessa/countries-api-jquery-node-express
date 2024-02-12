@@ -1,6 +1,6 @@
 # countries-api-jquery-node-express
 
-This project is an application that collects information on any country based on its name, capital or geographical area.
+Countries API is an application that collects information on any country based on its name, capital or geographical area.
 
 ## Table of Contents
 
@@ -43,7 +43,7 @@ The technologies used in this project are :
 4. Inside the project directory :
    - Install dependencies : `npm install`
    - Start server : `node server.js`
-   - Open `index.html` file in your browser.
+   - Open `index.html` file in your browser
 
 ## Contributing
 
