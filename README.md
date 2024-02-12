@@ -1,5 +1,62 @@
 # countries-api-jquery-node-express
-## 👉 https://jesselessa-countries-api.cyclic.app/
 
-An app created with jQuery, Node.js and Express, which collects specific info on any country thanks to an internal API
+This project is an application that collects information on any country based on its name, capital or geographical area.
 
+## Table of Contents
+
+- [Demo](#demo)
+- [Stack](#stack)
+- [Screenshot](#screenshot)
+- [Main features](#main-features)
+- [Run the project locally](#run-the-project-locally)
+- [Contributing](#contributing)
+- [Stay Updated](#stay-updated)
+- [Contact](#contact)
+
+## Demo
+
+You can see the project live demo [here](https://jesselessa-countries-api.cyclic.app/).
+
+## Stack
+
+The technologies used in this project are:
+
+- HTML, CSS
+- jQuery
+- Node.js
+- Express.js
+
+## Screenshot
+
+![Screenshot](./public/images/screenshot.png)
+
+## Main features
+
+- Fetch a country information by its name, capital or geographical area using a search form.
+- Reset the search form to its initial state.
+
+## Run the project locally
+
+1. Open your terminal and navigate to the location where you want the local repository to be copied.
+2. Clone the repository : `git clone https://github.com/jesselessa/countries-api-jquery-node.git`
+3. Navigate to the project directory : `cd countries-api-jquery-node`
+4. Inside the project directory :
+   - Install dependencies : `npm install`
+   - Start server : `node server.js`
+   - Open the `index.html` file in your preferred browser.
+
+## Contributing
+
+Feel free to make improvements, fix bugs or suggest new features. Contributions are welcomed !
+
+## Stay updated
+
+To stay updated with the project latest changes, you can pull them from the repository : `git pull origin main`
+
+## Contact
+
+For inquiries or further information, you can contact me via [LinkedIn](https://www.linkedin.com/in/jessica-elessa/).
+
+---
+
+&copy; 2024, Jessica ELESSA - All rights reserved

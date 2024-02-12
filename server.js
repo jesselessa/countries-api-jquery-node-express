@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const cors = require("cors");
 //--------------- DATA ------------------//
 const countriesData = require("./data/countriesData.json");
@@ -87,6 +87,6 @@ app.get("*", (_req, res) => {
 });
 
 //----------- START SERVER ----------//
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`);
 });
