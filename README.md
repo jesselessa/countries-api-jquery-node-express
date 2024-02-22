@@ -4,7 +4,6 @@ Countries API is an application that collects information on any country based o
 
 ## Table of Contents
 
-- [Demo](#demo)
 - [Stack](#stack)
 - [Screenshot](#screenshot)
 - [Main features](#main-features)
@@ -12,10 +11,6 @@ Countries API is an application that collects information on any country based o
 - [Contributing](#contributing)
 - [Stay Updated](#stay-updated)
 - [Contact](#contact)
-
-## Demo
-
-You can see the project live demo [here](https://jesselessa-countries-api.cyclic.app/).
 
 ## Stack
 

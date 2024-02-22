@@ -1,6 +1,6 @@
 //! The ready function executes the code after the DOM is fully loaded
 $().ready(() => {
-  const API_URL = "https://jesselessa-countries-api.cyclic.app"; // Replace by your own URL
+  const API_URL = "http://localhost:8000"; // Replace by your own API URL in production mode
 
   //* Elevator button
   function handleElevatorBtn() {
@@ -29,7 +29,6 @@ $().ready(() => {
 
     result = await $.ajax({
       url: `${API_URL}/all`,
-      // url: "http://localhost:8000/all", // Use in development mode
       success: populateCountryInfo,
       error: (error) => {
         console.log(error);
@@ -130,16 +129,13 @@ $().ready(() => {
 
     if ($("#country-btn").is(":checked")) {
       url = `${API_URL}/country/${inputValue}`;
-      // url = `http://localhost:8000/country/${inputValue}`; // Use in development mode
     } else if ($("#capital-btn").is(":checked")) {
       url = `${API_URL}/capital/${inputValue}`;
-      // url = `http://localhost:8000/capital/${inputValue}`; // Use in development mode
     } else if (
       $("#continent-btn").is(":checked") &&
       $("#continent-select option").is(":selected")
     ) {
       url = `${API_URL}/continent/${selectOptionValue}`;
-      // url = `http://localhost:8000/continent/${selectOptionValue}`; // Use in development mode
     }
 
     result = await $.ajax({

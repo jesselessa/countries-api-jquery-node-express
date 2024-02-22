@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 const cors = require("cors");
-const API_URL = process.env.API_URL;
+// const API_URL = process.env.API_URL; // Use in production mode
+
 //--------------- DATA ------------------//
 const countriesData = require("./data/countriesData.json");
 
 //------------- MIDDLEWARES -------------//
-app.use(cors({ origin: API_URL }));
-// app.use(cors()); // Use in development mode
+app.use(cors()); // Use in development mode
+// app.use(cors({ origin: API_URL })); // Use in production mode
 
 app.use(express.static("./public"));
 
